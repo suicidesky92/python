@@ -1,11 +1,8 @@
 #!/usr/bin/python3
+from pushbullet import Pushbullet
+import requests
 
-one = 'once'
-too = 'too'
-three = 3
-
-print("{0},{1},{2} and {0}".format(one, too, three))
-print("{0},{1},{2} and {0}".format(one, too, three))
-print('{0:H^9}'.format('main'))
-
-
+answer = requests.get('https://www.mysite.com/')
+if answer.status_code != 200:
+    pb = Pushbullet('o.BqIjZXrnfzj111111')
+    push = pb.push_note("Сайт упал, просыпайся", "!!!")
